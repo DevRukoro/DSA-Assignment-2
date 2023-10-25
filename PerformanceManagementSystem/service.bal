@@ -1,17 +1,19 @@
 import ballerina/graphql;
+import ballerina/sql;
 import ballerina/http;
 import ballerina/io;
 
 // Define a Ballerina client to interact with the GraphQL service.
 public function main() {
     // Define the GraphQL server endpoint.
-    string endpointUrl = "http://localhost:4000/graphql";  // Replace with your actual server URL.
-
+    string endpointUrl = "http://localhost:4000/graphql"; 
     // Sample GraphQL query for HoD, Supervisor, and Employee actions.
     string hodQuery = """
     query {
         departmentObjectives {
-            // Define the fields you want to retrieve.
+        string id;
+        string Firstname;
+        float percentage;
             
             
         }
@@ -21,7 +23,7 @@ public function main() {
     string supervisorQuery = """
     query {
         employeeScores {
-            // Define the fields you want to retrieve.
+            // Define the
         }
     }
     """;
@@ -29,7 +31,7 @@ public function main() {
     string employeeQuery = """
     query {
         myScores {
-            // Define the fields you want to retrieve.
+            // Define
         }
     }
     """;
@@ -38,17 +40,19 @@ public function main() {
     string hodMutation = """
     mutation {
         createDepartmentObjective(input: {
-            // Define the input fields for creating department objectives.
-        }) {
-            // Define the fields you want to retrieve in the response.
-        }
+        departmentTable.add({id: ide, ...data});
+        departmentTable.add({id: newDepartment.id, Firstname:newDepartment.Firstname, percentage:newDepartment.percentage});
+        return newDepartment.Firstname + "saved successfuly";
+        }) 
     }
     """;
 
     string supervisorMutation = """
     mutation {
         approveKPI(input: {
-            // Define the input fields for approving KPIs.
+            string id;
+            string Firstname;
+            string Unit;
         }) {
             // Define the fields you want to retrieve in the response.
         }
